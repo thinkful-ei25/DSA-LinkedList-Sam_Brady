@@ -119,6 +119,27 @@ class linkedList {
     return output;
   }
 
+  size(){
+    if(!this.head){
+      return 0;
+    }
+    let count = 1;
+    let currNode = this.head;
+    while(currNode.next!==null){
+      count++;
+      currNode = currNode.next;
+    }
+    return count;
+  }
+
+  isEmpty(){
+    if(this.head){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 }
 
 class _Node{

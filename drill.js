@@ -21,6 +21,10 @@ function main(){
   SLL.remove('Tauhida');
   let answer = SLL.display();
   console.log(answer);
+  let count = SLL.size();
+  console.log(count);
+
+  const SLL2 = new linkedList();
 
 }
 
