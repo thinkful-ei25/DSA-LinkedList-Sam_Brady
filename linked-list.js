@@ -40,6 +40,18 @@ class linkedList {
     previousNode.next = new _Node(item,currNode);
   }
 
+  insertCycle(value){
+    if(this.head === null){
+      this.insertFirst(value);
+    } else {
+      let tempNode = this.head;
+      while(tempNode.next !== null){
+        tempNode = tempNode.next;
+      } 
+      tempNode.next = new _Node(value,this.head);
+    }
+  }
+
   insertAfter(item,key){
     let currNode = this.head;
     let nextNode;
@@ -140,6 +152,42 @@ class linkedList {
     }
   }
 
+  findPrevious(item){
+    if(this.head.value === item){
+      return 'No previous item';
+    }
+    let currNode = this.head;
+    let previousNode = this.head;
+    while((currNode.next!==null)&&(currNode.value!==item)){
+      previousNode = currNode;
+      currNode = currNode.next;
+    }
+    return previousNode.value;
+  }
+
+  findLast(){
+    if(!this.head){
+      return 'Linked List has no values';
+    }
+    let currNode = this.head;
+    while(currNode.next!==null){
+      currNode = currNode.next;
+    }
+    return currNode.value;
+  }
+
+  // reverse() {
+  //   if (this.head === null || this.head.next === null) {
+  //     return 'cannot reverse list';
+  //   }
+  //   let first = this.head;
+  //   let rest = new linkedList(this.head.next);
+  //   rest.reverse();
+  //   first.next.next = first;
+  //   first.next = null;
+  // }
+  
+
 }
 
 class _Node{
@@ -148,5 +196,7 @@ class _Node{
     this.next = next;
   }
 }
+
+
 
 module.exports = linkedList;
